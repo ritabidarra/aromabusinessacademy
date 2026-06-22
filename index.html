@@ -1,10 +1,861 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Aroma Business Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --coral:       #E8837A;
+      --coral-dark:  #C85C52;
+      --coral-light: #F2B5AD;
+      --coral-pale:  #FDF1F0;
+      --gold:        #C4A44A;
+      --gold-light:  #F5EDD4;
+      --sage:        #7A9E7E;
+      --sage-light:  #EAF2EB;
+      --cream:       #F8F3EE;
+      --dark:        #2C1A17;
+      --mid:         #6B4040;
+      --muted:       #A07070;
+      --white:       #FFFFFF;
+      --ff-display:  'Cormorant Garamond', serif;
+      --ff-body:     'Inter', sans-serif;
+      --radius:      12px;
+      --radius-lg:   20px;
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--ff-body);
+      background: var(--cream);
+      color: var(--dark);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(248,243,238,0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(200,92,82,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      height: 64px;
+    }
+    .nav-brand {
+      font-family: var(--ff-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--coral-dark);
+      letter-spacing: .04em;
+    }
+    .nav-brand span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: .85rem;
+      font-weight: 400;
+      color: var(--mid);
+      letter-spacing: .04em;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--coral-dark); }
+    .nav-cta {
+      background: var(--coral-dark);
+      color: var(--white) !important;
+      padding: .4rem 1.1rem;
+      border-radius: 99px;
+      font-size: .82rem !important;
+      font-weight: 500 !important;
+      letter-spacing: .04em;
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: var(--coral) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 5vw 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(232,131,122,.13) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(196,164,74,.10) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    /* SVG Logo */
+    .logo-wrap { margin-bottom: 2rem; position: relative; z-index: 1; }
+    .logo-svg { width: 160px; height: auto; }
+
+    .hero-eyebrow {
+      font-family: var(--ff-body);
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      position: relative; z-index: 1;
+    }
+    .hero-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.18;
+      max-width: 780px;
+      margin: 0 auto 1.4rem;
+      position: relative; z-index: 1;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--coral-dark);
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--mid);
+      max-width: 560px;
+      margin: 0 auto 2.4rem;
+      line-height: 1.75;
+      position: relative; z-index: 1;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative; z-index: 1;
+    }
+    .btn-primary {
+      background: var(--coral-dark);
+      color: var(--white);
+      padding: .85rem 2rem;
+      border-radius: 99px;
+      font-size: .9rem;
+      font-weight: 500;
+      letter-spacing: .03em;
+      transition: background .2s, transform .15s;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--coral); transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--coral-dark);
+      padding: .85rem 2rem;
+      border-radius: 99px;
+      font-size: .9rem;
+      font-weight: 500;
+      letter-spacing: .03em;
+      border: 1.5px solid var(--coral-light);
+      transition: border-color .2s, background .2s, transform .15s;
+      display: inline-block;
+    }
+    .btn-secondary:hover {
+      border-color: var(--coral-dark);
+      background: var(--coral-pale);
+      transform: translateY(-1px);
+    }
+    /* Decorative dots row */
+    .hero-dots {
+      display: flex;
+      gap: .5rem;
+      justify-content: center;
+      margin-top: 3rem;
+      position: relative; z-index: 1;
+    }
+    .hero-dots span {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--coral-light);
+    }
+    .hero-dots span:nth-child(2) { background: var(--gold); }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 5rem 5vw; }
+    .section-label {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .75rem;
+    }
+    .section-title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.22;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--mid);
+      max-width: 520px;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* ── PILLARS ── */
+    .pillars { background: var(--white); }
+    .pillars-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .pillars-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .pillars-header .section-sub { margin: 0 auto; }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .pillar-card {
+      border: 1px solid rgba(232,131,122,.18);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem 1.8rem;
+      background: var(--cream);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(200,92,82,.08);
+    }
+    .pillar-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.4rem;
+    }
+    .pillar-icon.mind { background: var(--coral-pale); }
+    .pillar-icon.skill { background: var(--gold-light); }
+    .pillar-icon.tool { background: var(--sage-light); }
+    .pillar-card h3 {
+      font-family: var(--ff-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: .4rem;
+    }
+    .pillar-card .pillar-sub {
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .85rem;
+    }
+    .pillar-card p {
+      font-size: .93rem;
+      color: var(--mid);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .pillar-items {
+      list-style: none;
+      margin-top: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: .45rem;
+    }
+    .pillar-items li {
+      font-size: .88rem;
+      color: var(--mid);
+      display: flex;
+      align-items: flex-start;
+      gap: .5rem;
+    }
+    .pillar-items li::before {
+      content: '·';
+      color: var(--coral);
+      font-size: 1.2rem;
+      line-height: 1.2;
+      flex-shrink: 0;
+    }
+
+    /* ── MEMBERSHIP ── */
+    .membership { background: var(--coral-pale); }
+    .membership-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .membership-text .section-sub { max-width: 440px; }
+    .membership-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2.4rem;
+      border: 1px solid rgba(232,131,122,.2);
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: .5rem;
+      margin-bottom: 1.5rem;
+    }
+    .price-amount {
+      font-family: var(--ff-display);
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--coral-dark);
+    }
+    .price-period {
+      font-size: .9rem;
+      color: var(--muted);
+    }
+    .includes-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+      margin-bottom: 1.8rem;
+    }
+    .includes-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      font-size: .92rem;
+      color: var(--mid);
+    }
+    .check {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--sage-light);
+      color: var(--sage);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .7rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .btn-full {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: var(--coral-dark);
+      color: var(--white);
+      padding: .95rem;
+      border-radius: 99px;
+      font-size: .92rem;
+      font-weight: 500;
+      letter-spacing: .03em;
+      transition: background .2s;
+    }
+    .btn-full:hover { background: var(--coral); }
+    .membership-note {
+      text-align: center;
+      font-size: .8rem;
+      color: var(--muted);
+      margin-top: .85rem;
+    }
+
+    /* ── COURSES PREVIEW ── */
+    .courses { background: var(--white); }
+    .courses-inner { max-width: 1100px; margin: 0 auto; }
+    .courses-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .course-card {
+      border: 1px solid rgba(200,92,82,.14);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--cream);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .course-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(200,92,82,.1);
+    }
+    .course-thumb {
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+    }
+    .course-thumb.mind-bg { background: var(--coral-pale); }
+    .course-thumb.skill-bg { background: var(--gold-light); }
+    .course-thumb.tool-bg { background: var(--sage-light); }
+    .course-body { padding: 1.3rem 1.4rem; }
+    .course-tag {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .25rem .75rem;
+      border-radius: 99px;
+      margin-bottom: .7rem;
+    }
+    .tag-mind { background: var(--coral-pale); color: var(--coral-dark); }
+    .tag-skill { background: var(--gold-light); color: #8A6A10; }
+    .tag-tool { background: var(--sage-light); color: #3D6E41; }
+    .course-body h4 {
+      font-family: var(--ff-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: .4rem;
+      line-height: 1.3;
+    }
+    .course-body p {
+      font-size: .88rem;
+      color: var(--mid);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+    .course-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.4rem;
+      border-top: 1px solid rgba(200,92,82,.1);
+    }
+    .course-price {
+      font-family: var(--ff-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--coral-dark);
+    }
+    .btn-small {
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--coral-dark);
+      border: 1px solid var(--coral-light);
+      padding: .4rem 1rem;
+      border-radius: 99px;
+      transition: all .2s;
+    }
+    .btn-small:hover {
+      background: var(--coral-dark);
+      color: var(--white);
+      border-color: var(--coral-dark);
+    }
+
+    /* ── LEAD MAGNET BANNER ── */
+    .lead-magnet {
+      background: linear-gradient(135deg, var(--coral-dark) 0%, #A04840 100%);
+      padding: 4rem 5vw;
+    }
+    .lead-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .lead-text { flex: 1; min-width: 260px; }
+    .lead-text h2 {
+      font-family: var(--ff-display);
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: .75rem;
+    }
+    .lead-text p {
+      font-size: .95rem;
+      color: rgba(255,255,255,.8);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .lead-form {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      min-width: 280px;
+    }
+    .lead-form input {
+      padding: .8rem 1.2rem;
+      border-radius: 99px;
+      border: none;
+      font-size: .9rem;
+      font-family: var(--ff-body);
+      background: rgba(255,255,255,.15);
+      color: var(--white);
+      outline: none;
+      flex: 1;
+      min-width: 200px;
+      backdrop-filter: blur(4px);
+    }
+    .lead-form input::placeholder { color: rgba(255,255,255,.6); }
+    .lead-form input:focus { background: rgba(255,255,255,.25); }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--dark);
+      padding: .8rem 1.6rem;
+      border-radius: 99px;
+      font-size: .88rem;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+      white-space: nowrap;
+    }
+    .btn-gold:hover { background: #D4B45A; transform: translateY(-1px); }
+
+    /* ── ABOUT STRIP ── */
+    .about-strip {
+      background: var(--cream);
+      padding: 4.5rem 5vw;
+    }
+    .about-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .about-inner .section-title { margin-bottom: 1rem; }
+    .about-inner .section-sub {
+      margin: 0 auto 1.8rem;
+      max-width: 560px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      padding: 2.5rem 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-brand {
+      font-family: var(--ff-display);
+      font-size: 1rem;
+      color: var(--coral-light);
+      font-weight: 600;
+    }
+    .footer-copy {
+      font-size: .8rem;
+      color: rgba(255,255,255,.4);
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: .82rem;
+      color: rgba(255,255,255,.45);
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--coral-light); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .membership-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .courses-header { flex-direction: column; align-items: flex-start; }
+      footer { flex-direction: column; text-align: center; }
+      .lead-inner { flex-direction: column; }
+      .logo-svg { width: 130px; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Coming soon</h1>
-  <p>The Aroma Business Academy — launching soon.</p>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-brand">THE <span>AROMA</span> BUSINESS ACADEMY</div>
+  <ul class="nav-links">
+    <li><a href="#academia">A Academia</a></li>
+    <li><a href="#cursos">Cursos</a></li>
+    <li><a href="#membership">Membership</a></li>
+    <li><a href="#guia" class="nav-cta">Guia Gratuito</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="logo-wrap">
+    <!-- Inline SVG Logo — Proposta 1: Rosa, Coral & Dourado -->
+    <svg class="logo-svg" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Outer dotted circle -->
+      <circle cx="100" cy="95" r="68" stroke="#C4A44A" stroke-width="0.8" stroke-dasharray="2 4"/>
+      <!-- Inner circle with gota -->
+      <circle cx="100" cy="95" r="28" stroke="#E8837A" stroke-width="1.2" fill="none"/>
+      <!-- Central drop -->
+      <path d="M100 80 C100 80 112 92 112 100 C112 107 106.6 113 100 113 C93.4 113 88 107 88 100 C88 92 100 80 100 80Z" fill="#C85C52"/>
+      <!-- Petals around -->
+      <ellipse cx="100" cy="45" rx="7" ry="14" fill="#E8837A" opacity="0.9"/>
+      <ellipse cx="100" cy="145" rx="7" ry="14" fill="#E8837A" opacity="0.7"/>
+      <ellipse cx="55" cy="70" rx="7" ry="14" fill="#F2B5AD" opacity="0.9" transform="rotate(-60 55 70)"/>
+      <ellipse cx="145" cy="70" rx="7" ry="14" fill="#F2B5AD" opacity="0.9" transform="rotate(60 145 70)"/>
+      <ellipse cx="55" cy="120" rx="7" ry="14" fill="#E8837A" opacity="0.7" transform="rotate(60 55 120)"/>
+      <ellipse cx="145" cy="120" rx="7" ry="14" fill="#E8837A" opacity="0.7" transform="rotate(-60 145 120)"/>
+      <!-- Small leaf accents -->
+      <ellipse cx="78" cy="52" rx="4" ry="9" fill="#7A9E7E" opacity="0.8" transform="rotate(-30 78 52)"/>
+      <ellipse cx="122" cy="52" rx="4" ry="9" fill="#7A9E7E" opacity="0.8" transform="rotate(30 122 52)"/>
+      <!-- Gold dots -->
+      <circle cx="100" cy="27" r="2.5" fill="#C4A44A"/>
+      <circle cx="65" cy="36" r="1.8" fill="#C4A44A" opacity="0.7"/>
+      <circle cx="135" cy="36" r="1.8" fill="#C4A44A" opacity="0.7"/>
+      <circle cx="40" cy="95" r="1.8" fill="#C4A44A" opacity="0.5"/>
+      <circle cx="160" cy="95" r="1.8" fill="#C4A44A" opacity="0.5"/>
+      <!-- THE -->
+      <text x="100" y="173" text-anchor="middle" font-family="'Inter',sans-serif" font-size="7" fill="#C4A44A" letter-spacing="5">THE</text>
+      <!-- Divider line -->
+      <line x1="60" y1="176" x2="140" y2="176" stroke="#C4A44A" stroke-width="0.6"/>
+      <circle cx="100" cy="176" r="2" fill="#C4A44A"/>
+      <!-- AROMA -->
+      <text x="100" y="193" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="22" font-weight="600" fill="#2C1A17" letter-spacing="4">AROMA</text>
+      <!-- Business -->
+      <text x="100" y="205" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="11" font-style="italic" fill="#A07070" letter-spacing="2">Business</text>
+      <!-- ACADEMY -->
+      <text x="100" y="218" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="16" font-weight="600" fill="#2C1A17" letter-spacing="5">ACADEMY</text>
+    </svg>
+  </div>
+
+  <p class="hero-eyebrow">Bem-estar · Negócio · Transformação</p>
+  <h1 class="hero-title">
+    Uma academia para mulheres que querem<br/>
+    <em>transformar a sua vida</em> através do bem-estar
+  </h1>
+  <p class="hero-sub">
+    Desenvolvimento pessoal, aromaterapia prática e empreendedorismo com propósito —
+    tudo numa só plataforma, ao teu ritmo.
+  </p>
+  <div class="hero-btns">
+    <a href="#membership" class="btn-primary">Explorar a Membership</a>
+    <a href="#cursos" class="btn-secondary">Ver os Cursos</a>
+  </div>
+  <div class="hero-dots">
+    <span></span><span></span><span></span>
+  </div>
+</section>
+
+<!-- ── 3 PILLARS ── -->
+<section class="pillars" id="academia">
+  <div class="pillars-inner">
+    <div class="pillars-header">
+      <p class="section-label">A Academia</p>
+      <h2 class="section-title">Três pilares. Uma transformação.</h2>
+      <p class="section-sub">
+        Cada área foi desenhada para te apoiar numa fase diferente do teu caminho —
+        quem te tornas, o que aprendes e com que ferramentas cresces.
+      </p>
+    </div>
+    <div class="pillars-grid">
+
+      <div class="pillar-card">
+        <div class="pillar-icon mind">🧠</div>
+        <p class="pillar-sub">Pilar 1</p>
+        <h3>Mindset</h3>
+        <p>Quem precisas de te tornar para construir o negócio e a vida que imaginas. Trabalha a identidade, a confiança e a mentalidade de abundância.</p>
+        <ul class="pillar-items">
+          <li>Mentalidade de abundância financeira</li>
+          <li>Gestão emocional com óleos essenciais</li>
+          <li>Liderança feminina consciente</li>
+          <li>Rotinas matinais transformadoras</li>
+        </ul>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon skill">🎯</div>
+        <p class="pillar-sub">Pilar 2</p>
+        <h3>Skillset</h3>
+        <p>O que precisas de aprender — aromaterapia prática e competências de negócio para cresceres com confiança.</p>
+        <ul class="pillar-items">
+          <li>Os 10 óleos essenciais essenciais</li>
+          <li>Óleos para mamãs e bebés</li>
+          <li>Go for Silver · Go for Premier</li>
+          <li>Instagram e marca pessoal</li>
+        </ul>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon tool">🛠️</div>
+        <p class="pillar-sub">Pilar 3</p>
+        <h3>Toolset</h3>
+        <p>As ferramentas digitais que quase ninguém no wellness domina — e que fazem toda a diferença no teu negócio.</p>
+        <ul class="pillar-items">
+          <li>Começar com Inteligência Artificial</li>
+          <li>IA aplicada ao negócio doTERRA</li>
+          <li>Canva e criação de conteúdo</li>
+          <li>Automação e organização digital</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── COURSES PREVIEW ── -->
+<section class="courses" id="cursos">
+  <div class="courses-inner">
+    <div class="courses-header">
+      <div>
+        <p class="section-label">Cursos</p>
+        <h2 class="section-title">Começa onde faz sentido para ti</h2>
+      </div>
+      <a href="#cursos" class="btn-secondary">Ver todos os cursos</a>
+    </div>
+    <div class="courses-grid">
+
+      <div class="course-card">
+        <div class="course-thumb mind-bg">🧘‍♀️</div>
+        <div class="course-body">
+          <span class="course-tag tag-mind">Mindset</span>
+          <h4>Mentalidade de Abundância Financeira</h4>
+          <p>Transforma a tua relação com o dinheiro e descobre como pensar e agir como uma empreendedora de sucesso.</p>
+        </div>
+        <div class="course-footer">
+          <span class="course-price">€49</span>
+          <a href="#" class="btn-small">Inscrever</a>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <div class="course-thumb skill-bg">🌿</div>
+        <div class="course-body">
+          <span class="course-tag tag-skill">Skillset</span>
+          <h4>Os 10 Óleos Essenciais doTERRA</h4>
+          <p>Aprende a usar os óleos mais versáteis no dia a dia — com segurança, confiança e resultados reais.</p>
+        </div>
+        <div class="course-footer">
+          <span class="course-price">€59</span>
+          <a href="#" class="btn-small">Inscrever</a>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <div class="course-thumb tool-bg">💻</div>
+        <div class="course-body">
+          <span class="course-tag tag-tool">Toolset</span>
+          <h4>Começar com Inteligência Artificial</h4>
+          <p>Do zero ao dia a dia — aprende a usar IA para criar conteúdo, poupar tempo e fazer crescer o teu negócio.</p>
+        </div>
+        <div class="course-footer">
+          <span class="course-price">€39</span>
+          <a href="#" class="btn-small">Inscrever</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── MEMBERSHIP ── -->
+<section class="membership" id="membership">
+  <div class="membership-inner">
+    <div class="membership-text">
+      <p class="section-label">Membership</p>
+      <h2 class="section-title">Acesso a tudo.<br/>Por uma mensalidade simples.</h2>
+      <p class="section-sub">
+        Entra na comunidade e acede a todos os cursos, ebooks, masterclasses e novo conteúdo todos os meses —
+        sem custos extra, sem surpresas.
+      </p>
+    </div>
+    <div class="membership-card">
+      <div class="price-row">
+        <span class="price-amount">€27</span>
+        <span class="price-period">/ mês</span>
+      </div>
+      <ul class="includes-list">
+        <li><span class="check">✓</span> Acesso a todos os cursos disponíveis</li>
+        <li><span class="check">✓</span> Todos os ebooks e guias em PDF</li>
+        <li><span class="check">✓</span> Masterclasses ao vivo mensais</li>
+        <li><span class="check">✓</span> Gravações de todas as masterclasses</li>
+        <li><span class="check">✓</span> Novo conteúdo adicionado todos os meses</li>
+        <li><span class="check">✓</span> Acesso à comunidade privada</li>
+      </ul>
+      <a href="#" class="btn-full">Quero entrar na Membership</a>
+      <p class="membership-note">Cancelas quando quiseres · Sem compromisso</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── LEAD MAGNET ── -->
+<section class="lead-magnet" id="guia">
+  <div class="lead-inner">
+    <div class="lead-text">
+      <h2>Guia Gratuito:<br/>Óleos Essenciais para Mamãs e Bebés</h2>
+      <p>Descobre como usar os óleos com segurança desde o primeiro dia. 20 páginas práticas, em português, para descarregar agora.</p>
+    </div>
+    <div class="lead-form">
+      <input type="email" placeholder="O teu email" />
+      <button class="btn-gold">Descarregar Grátis</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT STRIP ── -->
+<section class="about-strip">
+  <div class="about-inner">
+    <p class="section-label">A Academia</p>
+    <h2 class="section-title">Uma plataforma aberta a especialistas</h2>
+    <p class="section-sub">
+      A The Aroma Business Academy é um espaço em crescimento. Para além do conteúdo da nossa fundadora,
+      a plataforma está aberta a professores convidados que queiram partilhar o seu conhecimento
+      nas áreas de bem-estar, desenvolvimento pessoal e empreendedorismo.
+    </p>
+    <a href="#" class="btn-secondary">Saber mais sobre a Academia</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-brand">THE AROMA BUSINESS ACADEMY</div>
+  <ul class="footer-links">
+    <li><a href="#academia">A Academia</a></li>
+    <li><a href="#cursos">Cursos</a></li>
+    <li><a href="#membership">Membership</a></li>
+    <li><a href="#guia">Guia Gratuito</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 The Aroma Business Academy · Lisboa, Portugal</p>
+</footer>
+
 </body>
 </html>
