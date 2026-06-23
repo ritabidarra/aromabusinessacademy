@@ -66,4 +66,365 @@
       gap: 4rem; align-items: center; position: relative; z-index: 1;
     }
     .hero-logo { display: flex; justify-content: center; }
-    .hero-logo img { width: 280px; height: auto; filter:
+    .hero-logo img { width: 280px; height: auto; filter: drop-shadow(0 4px 24px rgba(200,92,82,.15)); }
+    .hero-eyebrow {
+      font-size: .72rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: .6rem;
+    }
+    .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1.5px; background: var(--gold); }
+    .hero-title { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 600; color: var(--dark); line-height: 1.22; margin-bottom: 1.2rem; }
+    .hero-title em { font-style: italic; color: var(--coral-dark); font-weight: 300; }
+    .hero-sub { font-size: .95rem; font-weight: 300; color: var(--mid); line-height: 1.8; margin-bottom: 2rem; max-width: 460px; }
+    .hero-btns { display: flex; gap: .85rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--coral-dark); color: var(--white); padding: .8rem 1.8rem; border-radius: 99px;
+      font-size: .88rem; font-weight: 500; font-family: var(--ff);
+      transition: background .2s, transform .15s; border: none; cursor: pointer; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--coral); transform: translateY(-2px); }
+    .btn-secondary {
+      background: transparent; color: var(--coral-dark); padding: .8rem 1.8rem; border-radius: 99px;
+      font-size: .88rem; font-weight: 500; border: 1.5px solid var(--coral-light); transition: all .2s; display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--coral-dark); background: var(--coral-pale); transform: translateY(-2px); }
+    .hero-trust { display: flex; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
+    .hero-trust-item { display: flex; align-items: center; gap: .4rem; font-size: .78rem; color: var(--muted); }
+    .hero-trust-item span { color: var(--coral); }
+
+    section { padding: 5rem 5vw; }
+    .section-label { font-size: .7rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: .6rem; }
+    .section-title { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 600; color: var(--dark); line-height: 1.25; margin-bottom: .9rem; }
+    .section-sub { font-size: .95rem; color: var(--mid); line-height: 1.8; font-weight: 300; }
+
+    .pillars { background: var(--white); }
+    .pillars-inner { max-width: 1100px; margin: 0 auto; }
+    .pillars-header { text-align: center; margin-bottom: 3rem; }
+    .pillars-header .section-sub { max-width: 520px; margin: 0 auto; }
+    .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; }
+    .pillar-card {
+      border: 1px solid rgba(232,131,122,.15); border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem; background: var(--cream); transition: transform .2s, box-shadow .2s;
+    }
+    .pillar-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(200,92,82,.08); }
+    .pillar-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.1rem; font-size: 1.3rem; }
+    .mind-icon { background: var(--coral-pale); }
+    .skill-icon { background: var(--gold-light); }
+    .tool-icon { background: var(--sage-light); }
+    .pillar-card h3 { font-size: 1.15rem; font-weight: 600; color: var(--dark); margin-bottom: .25rem; }
+    .pillar-card .pillar-sub { font-size: .72rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .6rem; }
+    .pillar-card .pillar-desc { font-size: .88rem; color: var(--mid); line-height: 1.7; font-weight: 300; margin-bottom: .8rem; }
+    .pillar-items { list-style: none; display: flex; flex-direction: column; gap: .4rem; }
+    .pillar-items li { font-size: .84rem; color: var(--mid); display: flex; align-items: flex-start; gap: .5rem; }
+    .pillar-items li::before { content: '·'; color: var(--coral); font-size: 1.2rem; line-height: 1.1; flex-shrink: 0; }
+
+    .courses { background: var(--cream); }
+    .courses-inner { max-width: 1100px; margin: 0 auto; }
+    .courses-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem; }
+    .courses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+    .course-card { border: 1px solid rgba(200,92,82,.14); border-radius: var(--radius-lg); overflow: hidden; background: var(--white); transition: transform .2s, box-shadow .2s; }
+    .course-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(200,92,82,.1); }
+    .course-thumb { height: 130px; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; }
+    .mind-bg { background: var(--coral-pale); }
+    .skill-bg { background: var(--gold-light); }
+    .course-body { padding: 1.25rem 1.35rem; }
+    .course-tag { display: inline-block; font-size: .68rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: .2rem .7rem; border-radius: 99px; margin-bottom: .65rem; }
+    .tag-mind { background: var(--coral-pale); color: var(--coral-dark); }
+    .tag-skill { background: var(--gold-light); color: #8A6A10; }
+    .course-body h4 { font-size: 1rem; font-weight: 600; color: var(--dark); margin-bottom: .35rem; line-height: 1.35; }
+    .course-body p { font-size: .84rem; color: var(--mid); line-height: 1.7; font-weight: 300; }
+    .course-footer { display: flex; align-items: center; justify-content: space-between; padding: .9rem 1.35rem; border-top: 1px solid rgba(200,92,82,.1); }
+    .course-price { font-size: 1.1rem; font-weight: 600; color: var(--coral-dark); }
+    .btn-small { font-size: .8rem; font-weight: 500; color: var(--coral-dark); border: 1px solid var(--coral-light); padding: .35rem .9rem; border-radius: 99px; transition: all .2s; }
+    .btn-small:hover { background: var(--coral-dark); color: var(--white); border-color: var(--coral-dark); }
+    .coming-soon-banner { background: var(--gold-light); border: 1px solid rgba(196,164,74,.3); border-radius: var(--radius-lg); padding: 2rem; text-align: center; margin-top: 1.5rem; }
+    .coming-soon-banner p { font-size: .95rem; color: var(--mid); font-weight: 300; }
+    .coming-soon-banner strong { color: var(--gold); font-weight: 600; }
+
+    .membership { background: var(--coral-pale); }
+    .membership-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .membership-text .section-sub { max-width: 420px; }
+    .membership-card { background: var(--white); border-radius: var(--radius-lg); padding: 2.2rem; border: 1px solid rgba(232,131,122,.2); }
+    .price-row { display: flex; align-items: baseline; gap: .4rem; margin-bottom: 1.4rem; }
+    .price-amount { font-size: 2.8rem; font-weight: 700; color: var(--coral-dark); }
+    .price-period { font-size: .88rem; color: var(--muted); font-weight: 300; }
+    .includes-list { list-style: none; display: flex; flex-direction: column; gap: .65rem; margin-bottom: 1.6rem; }
+    .includes-list li { display: flex; align-items: flex-start; gap: .7rem; font-size: .88rem; color: var(--mid); font-weight: 300; }
+    .check { width: 18px; height: 18px; border-radius: 50%; background: var(--sage-light); color: var(--sage); display: flex; align-items: center; justify-content: center; font-size: .65rem; flex-shrink: 0; margin-top: 3px; font-weight: 600; }
+    .btn-full { display: block; width: 100%; text-align: center; background: var(--coral-dark); color: var(--white); padding: .9rem; border-radius: 99px; font-size: .88rem; font-weight: 500; font-family: var(--ff); transition: background .2s; border: none; cursor: pointer; }
+    .btn-full:hover { background: var(--coral); }
+    .membership-note { text-align: center; font-size: .76rem; color: var(--muted); margin-top: .75rem; }
+
+    .lead-magnet { background: var(--coral-dark); padding: 4rem 5vw; }
+    .lead-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2.5rem; flex-wrap: wrap; }
+    .lead-text { flex: 1; min-width: 260px; }
+    .lead-text h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 600; color: var(--white); line-height: 1.3; margin-bottom: .65rem; }
+    .lead-text p { font-size: .9rem; color: rgba(255,255,255,.78); line-height: 1.75; font-weight: 300; }
+    .lead-form { display: flex; gap: .7rem; flex-wrap: wrap; min-width: 280px; }
+    .lead-form input { padding: .75rem 1.2rem; border-radius: 99px; border: none; font-size: .88rem; font-family: var(--ff); background: rgba(255,255,255,.18); color: var(--white); outline: none; flex: 1; min-width: 200px; }
+    .lead-form input::placeholder { color: rgba(255,255,255,.55); }
+    .lead-form input:focus { background: rgba(255,255,255,.28); }
+    .btn-gold { background: var(--gold); color: var(--dark); padding: .75rem 1.5rem; border-radius: 99px; font-size: .86rem; font-weight: 600; font-family: var(--ff); border: none; cursor: pointer; transition: background .2s, transform .15s; white-space: nowrap; }
+    .btn-gold:hover { background: #D4B45A; transform: translateY(-1px); }
+
+    .blog { background: var(--white); }
+    .blog-inner { max-width: 1100px; margin: 0 auto; }
+    .blog-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem; }
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; }
+    .blog-card { border: 1px solid rgba(200,92,82,.12); border-radius: var(--radius-lg); overflow: hidden; background: var(--cream); transition: transform .2s, box-shadow .2s; }
+    .blog-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(200,92,82,.08); }
+    .blog-thumb { height: 120px; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+    .blog-body { padding: 1.25rem 1.35rem; }
+    .blog-cat { display: inline-block; font-size: .68rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: .5rem; }
+    .blog-body h4 { font-size: .95rem; font-weight: 600; color: var(--dark); margin-bottom: .35rem; line-height: 1.4; }
+    .blog-body p { font-size: .83rem; color: var(--mid); line-height: 1.7; font-weight: 300; }
+    .blog-footer { padding: .8rem 1.35rem; border-top: 1px solid rgba(200,92,82,.08); display: flex; justify-content: space-between; align-items: center; }
+    .blog-date { font-size: .75rem; color: var(--muted); }
+    .blog-link { font-size: .78rem; color: var(--coral-dark); font-weight: 500; }
+
+    footer { background: var(--dark); padding: 2.2rem 5vw; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo img { height: 36px; width: auto; opacity: .8; }
+    .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+    .footer-links a { font-size: .78rem; color: rgba(255,255,255,.4); transition: color .2s; }
+    .footer-links a:hover { color: var(--coral-light); }
+    .footer-copy { font-size: .76rem; color: rgba(255,255,255,.3); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+      .hero-logo { order: -1; }
+      .hero-logo img { width: 200px; }
+      .hero-eyebrow { justify-content: center; }
+      .hero-btns { justify-content: center; }
+      .hero-trust { justify-content: center; }
+      .membership-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .courses-header, .blog-header { flex-direction: column; align-items: flex-start; }
+      footer { flex-direction: column; text-align: center; }
+      .lead-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><img src="logo.jpeg" alt="Aroma Business Academy" /></div>
+  <ul class="nav-links">
+    <li><a href="#academia">A Academia</a></li>
+    <li><a href="#cursos">Cursos</a></li>
+    <li><a href="#membership">Membership</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#guia" class="nav-cta">Ebook Gratuito</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-logo"><img src="logo.jpeg" alt="Aroma Business Academy" /></div>
+    <div class="hero-text">
+      <p class="hero-eyebrow">Bem-estar · Transformação · Negócio</p>
+      <h1 class="hero-title">Uma academia para mulheres que querem <em>transformar a sua vida</em></h1>
+      <p class="hero-sub">Aromaterapia prática, desenvolvimento pessoal e empreendedorismo com propósito — tudo numa só plataforma, ao teu ritmo, em português.</p>
+      <div class="hero-btns">
+        <a href="#membership" class="btn-primary">Explorar a Membership</a>
+        <a href="#guia" class="btn-secondary">Ebook Gratuito</a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-item"><span>✓</span> Cancelas quando quiseres</div>
+        <div class="hero-trust-item"><span>✓</span> Novo conteúdo todos os meses</div>
+        <div class="hero-trust-item"><span>✓</span> 100% em português</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pillars" id="academia">
+  <div class="pillars-inner">
+    <div class="pillars-header">
+      <p class="section-label">A Academia</p>
+      <h2 class="section-title">Três pilares. Uma transformação.</h2>
+      <p class="section-sub">Cada área foi desenhada para te apoiar numa fase diferente do teu caminho — quem te tornas, o que aprendes e com que ferramentas cresces.</p>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon mind-icon">🧠</div>
+        <p class="pillar-sub">Pilar 1</p>
+        <h3>Mindset</h3>
+        <p class="pillar-desc">Quem precisas de te tornar para construir a vida que desejas.</p>
+        <ul class="pillar-items">
+          <li>Vision Board — do sonho ao plano</li>
+          <li>Mentalidade de abundância financeira</li>
+          <li>Gestão emocional com óleos essenciais</li>
+          <li>Rotinas matinais transformadoras</li>
+        </ul>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon skill-icon">🎯</div>
+        <p class="pillar-sub">Pilar 2</p>
+        <h3>Skillset</h3>
+        <p class="pillar-desc">O que precisas de aprender para cresceres no teu negócio com confiança.</p>
+        <ul class="pillar-items">
+          <li>Aromaterapia prática</li>
+          <li>Programa Go for Premier</li>
+          <li>Programa Go for Silver</li>
+          <li>Programa Go for Diamond</li>
+          <li>Marca Pessoal</li>
+        </ul>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon tool-icon">🛠️</div>
+        <p class="pillar-sub">Pilar 3</p>
+        <h3>Toolset</h3>
+        <p class="pillar-desc">As ferramentas digitais que fazem toda a diferença no teu negócio de bem-estar.</p>
+        <ul class="pillar-items">
+          <li>Começar com Inteligência Artificial</li>
+          <li>IA aplicada ao negócio de bem-estar</li>
+          <li>Canva e criação de conteúdo</li>
+          <li>Automação e organização digital</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="courses" id="cursos">
+  <div class="courses-inner">
+    <div class="courses-header">
+      <div>
+        <p class="section-label">Cursos em Destaque</p>
+        <h2 class="section-title">Começa onde faz sentido para ti</h2>
+      </div>
+    </div>
+    <div class="courses-grid">
+      <div class="course-card">
+        <div class="course-thumb mind-bg">🌟</div>
+        <div class="course-body">
+          <span class="course-tag tag-mind">Mindset</span>
+          <h4>Vision Board Experience</h4>
+          <p>Cria clareza. Alinha a tua visão. Desenha a tua vida abundante.</p>
+        </div>
+        <div class="course-footer">
+          <span class="course-price">Em breve</span>
+          <span class="btn-small" style="opacity:.5;cursor:default;">Disponível brevemente</span>
+        </div>
+      </div>
+      <div class="course-card">
+        <div class="course-thumb skill-bg">🌿</div>
+        <div class="course-body">
+          <span class="course-tag tag-skill">Skillset</span>
+          <h4>Go for Premier</h4>
+          <p>Cria um negócio na área do bem-estar e da Aromaterapia com segurança e confiança.</p>
+        </div>
+        <div class="course-footer">
+          <span class="course-price">Em breve</span>
+          <span class="btn-small" style="opacity:.5;cursor:default;">Disponível brevemente</span>
+        </div>
+      </div>
+    </div>
+    <div class="coming-soon-banner">
+      <p><strong>Mais cursos a caminho.</strong> Estamos a preparar conteúdo novo todos os meses — em Mindset, Skillset e Toolset.</p>
+    </div>
+  </div>
+</section>
+
+<section class="membership" id="membership">
+  <div class="membership-inner">
+    <div class="membership-text">
+      <p class="section-label">Membership</p>
+      <h2 class="section-title">Acesso a tudo.<br/>Uma mensalidade simples.</h2>
+      <p class="section-sub">Entra na comunidade e acede a todos os cursos, ebooks, masterclasses e novo conteúdo todos os meses — sem custos extra, sem surpresas.</p>
+    </div>
+    <div class="membership-card">
+      <div class="price-row">
+        <span class="price-amount">€27</span>
+        <span class="price-period">/ mês</span>
+      </div>
+      <ul class="includes-list">
+        <li><span class="check">✓</span> Todos os cursos disponíveis</li>
+        <li><span class="check">✓</span> Todos os ebooks e guias em PDF</li>
+        <li><span class="check">✓</span> Masterclasses ao vivo mensais</li>
+        <li><span class="check">✓</span> Gravações de todas as masterclasses</li>
+        <li><span class="check">✓</span> Novo conteúdo todos os meses</li>
+        <li><span class="check">✓</span> Acesso à comunidade privada</li>
+      </ul>
+      <button class="btn-full">Quero entrar na Membership</button>
+      <p class="membership-note">Cancelas quando quiseres · Sem compromisso</p>
+    </div>
+  </div>
+</section>
+
+<section class="lead-magnet" id="guia">
+  <div class="lead-inner">
+    <div class="lead-text">
+      <h2>Ebook Gratuito: Desenha a Tua Vida Abundante</h2>
+      <p>5 passos para criares uma visão clara dos teus próximos 12 meses. Uma pausa intencional para reflectires, sonhares e desenhares a vida que queres construir.</p>
+    </div>
+    <div class="lead-form">
+      <input type="email" placeholder="O teu email" />
+      <button class="btn-gold">Descarregar Grátis</button>
+    </div>
+  </div>
+</section>
+
+<section class="blog" id="blog">
+  <div class="blog-inner">
+    <div class="blog-header">
+      <div>
+        <p class="section-label">Blog</p>
+        <h2 class="section-title">Inspiração para o teu caminho</h2>
+      </div>
+      <a href="#blog" class="btn-secondary">Ver todos os artigos</a>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-thumb mind-bg">🧘‍♀️</div>
+        <div class="blog-body">
+          <span class="blog-cat">Mindset</span>
+          <h4>Como criar um Vision Board que realmente funciona</h4>
+          <p>Um Vision Board não é decoração — é uma ferramenta de alinhamento. Descobre como criar o teu com intenção.</p>
+        </div>
+        <div class="blog-footer">
+          <span class="blog-date">Em breve</span>
+          <span class="blog-link">Ler →</span>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-thumb skill-bg">🌿</div>
+        <div class="blog-body">
+          <span class="blog-cat">Skillset</span>
+          <h4>Os 5 óleos essenciais que nunca devem faltar em casa</h4>
+          <p>Da lavanda ao hortelã-pimenta — aprende como usar os óleos mais versáteis no teu dia a dia.</p>
+        </div>
+        <div class="blog-footer">
+          <span class="blog-date">Em breve</span>
+          <span class="blog-link">Ler →</span>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-thumb" style="background:var(--sage-light)">💻</div>
+        <div class="blog-body">
+          <span class="blog-cat">Toolset</span>
+          <h4>3 formas de usar IA para poupar 5 horas por semana</h4>
+          <p>Ferramentas simples que qualquer empreendedora pode usar hoje — sem conhecimentos técnicos.</p>
+        </div>
+        <div class="blog-footer">
+          <span class="blog-date">Em breve</span>
+          <span class="blog-link">Ler →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo"><img src="logo.jpeg" alt="Aroma Business Academy" /></div>
+  <ul class="footer-links">
+    <li><a href="#academia">A Academia</a></li>
+    <li><a href="#cursos">Cursos</a></li>
+    <li><a href="#membership">Membership</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#guia">Ebook Gratuito</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Aroma Business Academy · Lisboa, Portugal</p>
+</footer>
+
+</body>
+</html>
