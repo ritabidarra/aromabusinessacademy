@@ -29,20 +29,19 @@
 
     .hero{min-height:88vh;display:flex;align-items:center;padding:4rem 5vw;position:relative;overflow:hidden}
     .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 0% 50%,rgba(232,131,122,.1) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 100% 20%,rgba(196,164,74,.08) 0%,transparent 60%);pointer-events:none}
-    .hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:center;position:relative;z-index:1}
-    .hero-logo{display:flex;justify-content:center}
-    .hero-logo img{width:220px;height:auto;filter:drop-shadow(0 4px 24px rgba(200,92,82,.15))}
-    .hero-eyebrow{font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
-    .hero-eyebrow::before{content:'';display:block;width:24px;height:1.5px;background:var(--gold)}
-    .hero-title{font-size:clamp(2rem,3.5vw,3rem);font-weight:600;color:var(--dark);line-height:1.22;margin-bottom:1.2rem}
+    .hero-inner{max-width:1100px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
+    .hero-text{max-width:680px;text-align:center}
+    .hero-eyebrow{font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;justify-content:center;gap:.6rem}
+    .hero-eyebrow::before,.hero-eyebrow::after{content:'';display:block;width:24px;height:1.5px;background:var(--gold)}
+    .hero-title{font-size:clamp(2rem,4vw,3.4rem);font-weight:600;color:var(--dark);line-height:1.22;margin-bottom:1.2rem}
     .hero-title em{font-style:italic;color:var(--coral-dark);font-weight:300}
-    .hero-sub{font-size:.95rem;font-weight:300;color:var(--mid);line-height:1.8;margin-bottom:2rem;max-width:460px}
-    .hero-btns{display:flex;gap:.85rem;flex-wrap:wrap}
+    .hero-sub{font-size:.95rem;font-weight:300;color:var(--mid);line-height:1.8;margin-bottom:2rem;max-width:520px;margin-left:auto;margin-right:auto}
+    .hero-btns{display:flex;gap:.85rem;flex-wrap:wrap;justify-content:center}
     .btn-primary{background:var(--coral-dark);color:var(--white);padding:.8rem 1.8rem;border-radius:99px;font-size:.88rem;font-weight:500;font-family:var(--ff);transition:background .2s,transform .15s;border:none;cursor:pointer;display:inline-block}
     .btn-primary:hover{background:var(--coral);transform:translateY(-2px)}
     .btn-secondary{background:transparent;color:var(--coral-dark);padding:.8rem 1.8rem;border-radius:99px;font-size:.88rem;font-weight:500;border:1.5px solid var(--coral-light);transition:all .2s;display:inline-block}
     .btn-secondary:hover{border-color:var(--coral-dark);background:var(--coral-pale);transform:translateY(-2px)}
-    .hero-trust{display:flex;gap:1.5rem;margin-top:2rem;flex-wrap:wrap}
+    .hero-trust{display:flex;gap:1.5rem;margin-top:2rem;flex-wrap:wrap;justify-content:center}
     .hero-trust-item{display:flex;align-items:center;gap:.4rem;font-size:.78rem;color:var(--muted)}
     .hero-trust-item span{color:var(--coral)}
 
@@ -113,6 +112,31 @@
     .btn-gold{background:var(--gold);color:var(--dark);padding:.75rem 1.5rem;border-radius:99px;font-size:.86rem;font-weight:600;font-family:var(--ff);border:none;cursor:pointer;transition:background .2s,transform .15s;white-space:nowrap}
     .btn-gold:hover{background:#D4B45A;transform:translateY(-1px)}
 
+    /* NEWSLETTER */
+    .newsletter{background:var(--sage-light);padding:4rem 5vw}
+    .newsletter-inner{max-width:700px;margin:0 auto;text-align:center}
+    .newsletter-inner .section-title{margin-bottom:.5rem}
+    .newsletter-inner .section-sub{margin-bottom:2rem}
+    .newsletter-form{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center}
+    .newsletter-form input{padding:.75rem 1.4rem;border-radius:99px;border:1px solid rgba(122,158,126,.3);font-size:.88rem;font-family:var(--ff);background:var(--white);color:var(--dark);outline:none;flex:1;min-width:220px;max-width:320px}
+    .newsletter-form input:focus{border-color:var(--sage)}
+    .btn-sage{background:var(--sage);color:var(--white);padding:.75rem 1.6rem;border-radius:99px;font-size:.86rem;font-weight:600;font-family:var(--ff);border:none;cursor:pointer;transition:background .2s,transform .15s;white-space:nowrap}
+    .btn-sage:hover{background:#5E8562;transform:translateY(-1px)}
+    .newsletter-note{font-size:.76rem;color:var(--sage);margin-top:.85rem}
+
+    /* CONTACTS */
+    .contacts{background:var(--cream);padding:4rem 5vw}
+    .contacts-inner{max-width:700px;margin:0 auto;text-align:center}
+    .contacts-inner .section-title{margin-bottom:.5rem}
+    .contacts-inner .section-sub{margin-bottom:2.5rem}
+    .contacts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.25rem;margin-bottom:2rem}
+    .contact-card{background:var(--white);border:1px solid rgba(232,131,122,.15);border-radius:var(--radius-lg);padding:1.5rem 1.25rem;text-align:center;transition:transform .2s,box-shadow .2s}
+    .contact-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(200,92,82,.08)}
+    .contact-icon{font-size:1.8rem;margin-bottom:.75rem}
+    .contact-card h4{font-size:.9rem;font-weight:600;color:var(--dark);margin-bottom:.3rem}
+    .contact-card p{font-size:.82rem;color:var(--mid);font-weight:300}
+    .contact-card a{color:var(--coral-dark);font-weight:500;font-size:.84rem}
+
     .blog{background:var(--white)}
     .blog-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem}
     .blog-card{border:1px solid rgba(200,92,82,.12);border-radius:var(--radius-lg);overflow:hidden;background:var(--cream);transition:transform .2s,box-shadow .2s}
@@ -136,20 +160,17 @@
     @media(max-width:768px){
       .nav-links{display:none}
       .hero-inner{grid-template-columns:1fr;text-align:center;gap:2rem}
-      .hero-logo{order:-1}
-      .hero-logo img{width:160px}
-      .hero-eyebrow{justify-content:center}
-      .hero-btns{justify-content:center}
-      .hero-trust{justify-content:center}
       .membership-inner{grid-template-columns:1fr;gap:2rem}
       .courses-header,.blog-header{flex-direction:column;align-items:flex-start}
       footer{flex-direction:column;text-align:center}
       .lead-inner{flex-direction:column}
+      .contacts-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="nav-logo">
     <img src="Logo.png" alt="Aroma Business Academy" />
@@ -163,11 +184,9 @@
   </ul>
 </nav>
 
+<!-- HERO — sem logo central, só texto -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-logo">
-      <img src="Logo.png" alt="Aroma Business Academy" />
-    </div>
     <div class="hero-text">
       <p class="hero-eyebrow">Bem-estar · Transformação · Negócio</p>
       <h1 class="hero-title">Uma academia para mulheres que querem <em>transformar a sua vida</em></h1>
@@ -185,6 +204,7 @@
   </div>
 </section>
 
+<!-- PILLARS -->
 <section class="pillars" id="academia">
   <div class="pillars-inner">
     <div class="pillars-header">
@@ -234,6 +254,7 @@
   </div>
 </section>
 
+<!-- COURSES -->
 <section class="courses" id="cursos">
   <div class="courses-inner">
     <div class="courses-header">
@@ -274,6 +295,7 @@
   </div>
 </section>
 
+<!-- MEMBERSHIP -->
 <section class="membership" id="membership">
   <div class="membership-inner">
     <div class="membership-text">
@@ -300,6 +322,7 @@
   </div>
 </section>
 
+<!-- LEAD MAGNET -->
 <section class="lead-magnet" id="guia">
   <div class="lead-inner">
     <div class="lead-text">
@@ -313,6 +336,47 @@
   </div>
 </section>
 
+<!-- NEWSLETTER -->
+<section class="newsletter" id="newsletter">
+  <div class="newsletter-inner">
+    <p class="section-label">Newsletter</p>
+    <h2 class="section-title">Recebe a nossa Newsletter</h2>
+    <p class="section-sub">Inspiração, novidades e conteúdo exclusivo directamente no teu email — uma vez por semana, sem spam.</p>
+    <div class="newsletter-form">
+      <input type="email" placeholder="O teu email" />
+      <button class="btn-sage">Subscrever</button>
+    </div>
+    <p class="newsletter-note">Podes cancelar a qualquer momento · Sem compromisso</p>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section class="contacts" id="contactos">
+  <div class="contacts-inner">
+    <p class="section-label">Contactos</p>
+    <h2 class="section-title">Fala connosco</h2>
+    <p class="section-sub">Tens alguma dúvida sobre a academia, os cursos ou a membership? Estamos aqui para ajudar.</p>
+    <div class="contacts-grid">
+      <div class="contact-card">
+        <div class="contact-icon">📧</div>
+        <h4>Email</h4>
+        <p><a href="mailto:info@aromabusinessacademy.com">info@aromabusinessacademy.com</a></p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">📸</div>
+        <h4>Instagram</h4>
+        <p><a href="#" target="_blank">@aromabusinessacademy</a></p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">💬</div>
+        <h4>WhatsApp</h4>
+        <p><a href="#" target="_blank">Envia mensagem</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
 <section class="blog" id="blog">
   <div class="blog-inner">
     <div class="blog-header">
@@ -363,6 +427,7 @@
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-logo">
     <img src="Logo.png" alt="Aroma Business Academy" />
@@ -371,6 +436,8 @@
     <li><a href="#academia">A Academia</a></li>
     <li><a href="#cursos">Cursos</a></li>
     <li><a href="#membership">Membership</a></li>
+    <li><a href="#newsletter">Newsletter</a></li>
+    <li><a href="#contactos">Contactos</a></li>
     <li><a href="#blog">Blog</a></li>
     <li><a href="#guia">Ebook Gratuito</a></li>
   </ul>
