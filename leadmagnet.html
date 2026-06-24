@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ebook Gratuito — Desenha a Tua Vida Abundante</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --coral:#E8837A;--coral-dark:#C85C52;--coral-light:#F2B5AD;--coral-pale:#FDF1F0;
+      --gold:#C4A44A;--gold-light:#F5EDD4;--sage:#7A9E7E;--sage-light:#EAF2EB;
+      --cream:#F8F3EE;--dark:#2C1A17;--mid:#6B4040;--muted:#A07070;--white:#FFFFFF;
+      --ff:'Poppins',sans-serif;--radius:12px;--radius-lg:20px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--ff);background:var(--cream);color:var(--dark);font-size:16px;line-height:1.7}
+    a{color:inherit;text-decoration:none}
+
+    /* NAV — minimal, no distractions */
+    nav{
+      background:rgba(248,243,238,0.97);
+      border-bottom:1px solid rgba(200,92,82,0.1);
+      display:flex;align-items:center;justify-content:center;
+      padding:0 5vw;height:64px;
+    }
+    .nav-logo img{height:40px;width:auto}
+
+    /* HERO */
+    .hero{
+      min-height:92vh;display:flex;align-items:center;
+      padding:4rem 5vw;position:relative;overflow:hidden;
+    }
+    .hero::before{
+      content:'';position:absolute;inset:0;
+      background:
+        radial-gradient(ellipse 60% 60% at 80% 50%,rgba(232,131,122,.12) 0%,transparent 65%),
+        radial-gradient(ellipse 40% 40% at 10% 20%,rgba(196,164,74,.08) 0%,transparent 60%);
+      pointer-events:none;
+    }
+    .hero-inner{
+      max-width:1100px;margin:0 auto;width:100%;
+      display:grid;grid-template-columns:1.1fr 0.9fr;
+      gap:4rem;align-items:center;position:relative;z-index:1;
+    }
+
+    /* LEFT — text */
+    .hero-badge{
+      display:inline-flex;align-items:center;gap:.5rem;
+      background:var(--gold-light);color:var(--gold);
+      font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+      padding:.35rem .9rem;border-radius:99px;margin-bottom:1.25rem;
+    }
+    .hero-title{
+      font-size:clamp(2rem,4vw,3.2rem);font-weight:600;
+      color:var(--dark);line-height:1.18;margin-bottom:1rem;
+    }
+    .hero-title em{font-style:italic;color:var(--coral-dark);font-weight:300}
+    .hero-subtitle{
+      font-size:1rem;font-weight:300;color:var(--mid);
+      line-height:1.8;margin-bottom:1.75rem;max-width:480px;
+    }
+    .benefits{list-style:none;display:flex;flex-direction:column;gap:.65rem;margin-bottom:2rem}
+    .benefits li{
+      display:flex;align-items:flex-start;gap:.75rem;
+      font-size:.9rem;color:var(--mid);font-weight:300;
+    }
+    .benefit-icon{
+      width:22px;height:22px;border-radius:50%;
+      background:var(--coral-pale);color:var(--coral-dark);
+      display:flex;align-items:center;justify-content:center;
+      font-size:.7rem;font-weight:700;flex-shrink:0;margin-top:2px;
+    }
+    .hero-note{
+      font-size:.78rem;color:var(--muted);
+      display:flex;align-items:center;gap:.4rem;margin-top:1rem;
+    }
+    .hero-note span{color:var(--sage)}
+
+    /* RIGHT — form card */
+    .form-card{
+      background:var(--white);border-radius:var(--radius-lg);
+      padding:2.4rem;border:1px solid rgba(232,131,122,.2);
+      box-shadow:0 8px 40px rgba(200,92,82,.1);
+    }
+    .form-card-title{
+      font-size:1.1rem;font-weight:600;color:var(--dark);
+      margin-bottom:.4rem;text-align:center;
+    }
+    .form-card-sub{
+      font-size:.84rem;color:var(--muted);font-weight:300;
+      text-align:center;margin-bottom:1.75rem;
+    }
+    .form-group{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1rem}
+    .form-group label{font-size:.78rem;font-weight:500;color:var(--mid)}
+    .form-group input{
+      padding:.75rem 1.1rem;border-radius:var(--radius);
+      border:1.5px solid rgba(200,92,82,.2);
+      font-size:.88rem;font-family:var(--ff);
+      background:var(--cream);color:var(--dark);outline:none;
+      transition:border-color .2s;
+    }
+    .form-group input:focus{border-color:var(--coral-dark);background:var(--white)}
+    .form-group input::placeholder{color:var(--muted)}
+    .btn-submit{
+      display:block;width:100%;
+      background:var(--coral-dark);color:var(--white);
+      padding:.95rem;border-radius:99px;
+      font-size:.92rem;font-weight:600;font-family:var(--ff);
+      border:none;cursor:pointer;margin-top:1.25rem;
+      transition:background .2s,transform .15s;
+      text-align:center;
+    }
+    .btn-submit:hover{background:var(--coral);transform:translateY(-2px)}
+    .form-privacy{
+      font-size:.74rem;color:var(--muted);text-align:center;
+      margin-top:.85rem;line-height:1.5;
+    }
+
+    /* EBOOK MOCKUP */
+    .ebook-mockup{
+      background:linear-gradient(135deg,var(--coral-pale) 0%,var(--gold-light) 100%);
+      border-radius:var(--radius-lg);padding:2.5rem 2rem;
+      text-align:center;margin-bottom:2rem;
+      border:1px solid rgba(200,92,82,.15);
+      position:relative;overflow:hidden;
+    }
+    .ebook-mockup::before{
+      content:'';position:absolute;
+      top:-30px;right:-30px;width:120px;height:120px;
+      border-radius:50%;background:rgba(232,131,122,.08);
+    }
+    .ebook-icon{font-size:3.5rem;margin-bottom:1rem}
+    .ebook-mockup h3{
+      font-size:1rem;font-weight:600;color:var(--dark);
+      line-height:1.35;margin-bottom:.4rem;
+    }
+    .ebook-mockup p{font-size:.82rem;color:var(--mid);font-weight:300}
+    .ebook-pages{
+      display:inline-block;margin-top:.75rem;
+      font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+      color:var(--gold);background:var(--gold-light);
+      padding:.25rem .8rem;border-radius:99px;
+    }
+
+    /* SOCIAL PROOF */
+    .proof{background:var(--white);padding:4rem 5vw}
+    .proof-inner{max-width:900px;margin:0 auto;text-align:center}
+    .proof-title{
+      font-size:.72rem;font-weight:600;letter-spacing:.18em;
+      text-transform:uppercase;color:var(--gold);margin-bottom:2rem;
+    }
+    .proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.25rem}
+    .proof-card{
+      background:var(--cream);border-radius:var(--radius-lg);
+      padding:1.5rem;border:1px solid rgba(232,131,122,.12);
+      text-align:left;
+    }
+    .proof-stars{color:var(--gold);font-size:.9rem;margin-bottom:.6rem}
+    .proof-text{font-size:.88rem;color:var(--mid);line-height:1.7;font-weight:300;font-style:italic;margin-bottom:.85rem}
+    .proof-author{font-size:.8rem;font-weight:500;color:var(--dark)}
+
+    /* WHAT INSIDE */
+    .inside{background:var(--coral-pale);padding:4rem 5vw}
+    .inside-inner{max-width:800px;margin:0 auto;text-align:center}
+    .inside-inner .section-label{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+    .inside-inner .section-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;color:var(--dark);line-height:1.25;margin-bottom:.9rem}
+    .inside-inner .section-sub{font-size:.95rem;color:var(--mid);line-height:1.8;font-weight:300;margin-bottom:2.5rem}
+    .steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;text-align:left}
+    .step-card{
+      background:var(--white);border-radius:var(--radius-lg);
+      padding:1.5rem;border:1px solid rgba(232,131,122,.15);
+    }
+    .step-number{
+      font-size:.72rem;font-weight:700;letter-spacing:.1em;
+      color:var(--coral-dark);text-transform:uppercase;margin-bottom:.5rem;
+    }
+    .step-card h4{font-size:.95rem;font-weight:600;color:var(--dark);margin-bottom:.35rem}
+    .step-card p{font-size:.83rem;color:var(--mid);font-weight:300;line-height:1.65}
+
+    /* CTA BOTTOM */
+    .cta-bottom{background:var(--coral-dark);padding:4rem 5vw;text-align:center}
+    .cta-bottom h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;color:var(--white);line-height:1.3;margin-bottom:.75rem}
+    .cta-bottom p{font-size:.95rem;color:rgba(255,255,255,.78);font-weight:300;margin-bottom:2rem}
+    .btn-cta-white{
+      display:inline-block;background:var(--white);color:var(--coral-dark);
+      padding:.9rem 2.2rem;border-radius:99px;font-size:.92rem;font-weight:600;
+      transition:background .2s,transform .15s;
+    }
+    .btn-cta-white:hover{background:var(--cream);transform:translateY(-2px)}
+
+    /* FOOTER minimal */
+    footer{
+      background:var(--dark);padding:1.8rem 5vw;
+      display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+    }
+    .footer-logo img{height:32px;width:auto;opacity:.8}
+    .footer-links{display:flex;gap:1.5rem;list-style:none}
+    .footer-links a{font-size:.76rem;color:rgba(255,255,255,.35);transition:color .2s}
+    .footer-links a:hover{color:var(--coral-light)}
+    .footer-copy{font-size:.74rem;color:rgba(255,255,255,.25)}
+
+    @media(max-width:768px){
+      .hero-inner{grid-template-columns:1fr;gap:2.5rem}
+      .steps-grid{grid-template-columns:1fr 1fr}
+      footer{flex-direction:column;text-align:center}
+    }
+    @media(max-width:480px){
+      .steps-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV — minimal, no menu links -->
+<nav>
+  <div class="nav-logo">
+    <img src="Logo.png" alt="Aroma Business Academy" />
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <!-- LEFT -->
+    <div class="hero-left">
+      <div class="hero-badge">✦ Download gratuito</div>
+      <h1 class="hero-title">
+        Desenha a Tua<br/>
+        <em>Vida Abundante</em>
+      </h1>
+      <p class="hero-subtitle">
+        5 passos para criares uma visão clara dos teus próximos 12 meses.
+        Uma pausa intencional para reflectires, sonhares e desenhares
+        a vida que queres construir.
+      </p>
+      <ul class="benefits">
+        <li>
+          <div class="benefit-icon">1</div>
+          Clareza sobre o que realmente queres para a tua vida
+        </li>
+        <li>
+          <div class="benefit-icon">2</div>
+          Um plano concreto para os próximos 12 meses
+        </li>
+        <li>
+          <div class="benefit-icon">3</div>
+          Exercícios práticos de reflexão e visualização
+        </li>
+        <li>
+          <div class="benefit-icon">4</div>
+          Alinhamento entre os teus valores, sonhos e acções diárias
+        </li>
+        <li>
+          <div class="benefit-icon">5</div>
+          Uma visão de vida que te motiva a agir todos os dias
+        </li>
+      </ul>
+      <div class="hero-note">
+        <span>✓</span> Gratuito · PDF imediato · Sem spam
+      </div>
+    </div>
+
+    <!-- RIGHT — form -->
+    <div class="hero-right">
+      <div class="ebook-mockup">
+        <div class="ebook-icon">📖</div>
+        <h3>Desenha a Tua Vida Abundante</h3>
+        <p>5 passos para criares uma visão clara dos teus próximos 12 meses</p>
+        <span class="ebook-pages">Ebook gratuito · PDF</span>
+      </div>
+
+      <div class="form-card">
+        <div class="form-card-title">Quero o meu ebook gratuito</div>
+        <div class="form-card-sub">Preenche os teus dados e recebe o PDF imediatamente</div>
+        <div class="form-group">
+          <label>Primeiro nome</label>
+          <input type="text" placeholder="O teu primeiro nome" />
+        </div>
+        <div class="form-group">
+          <label>Apelido</label>
+          <input type="text" placeholder="O teu apelido" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="O teu email" />
+        </div>
+        <button class="btn-submit">Descarregar o Ebook Gratuito →</button>
+        <p class="form-privacy">🔒 Os teus dados estão seguros. Nunca partilhamos o teu email com terceiros.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section class="inside">
+  <div class="inside-inner">
+    <p class="section-label">O que vais encontrar</p>
+    <h2 class="section-title">5 passos para desenhares a tua vida</h2>
+    <p class="section-sub">Cada passo foi criado para te guiar numa reflexão profunda e intencional — do sonho ao plano concreto.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">Passo 1</div>
+        <h4>Onde estás agora</h4>
+        <p>Um olhar honesto sobre a tua vida actual — o ponto de partida para qualquer transformação real.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">Passo 2</div>
+        <h4>O que queres criar</h4>
+        <p>Define com clareza a vida que queres — nas 8 áreas que mais importam para o teu bem-estar e felicidade.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">Passo 3</div>
+        <h4>A tua visão de 12 meses</h4>
+        <p>Cria uma imagem vívida e detalhada de onde queres estar daqui a um ano — e sente a diferença.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">Passo 4</div>
+        <h4>Os teus 3 objectivos</h4>
+        <p>Transforma a tua visão em 3 objectivos concretos e accionáveis para os próximos 12 meses.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">Passo 5</div>
+        <h4>O teu plano de acção</h4>
+        <p>Define os primeiros passos para começares hoje — porque a vida abundante começa agora.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="proof">
+  <div class="proof-inner">
+    <p class="proof-title">O que dizem as nossas alunas</p>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <p class="proof-text">"Este exercício mudou completamente a forma como olho para o meu futuro. Finalmente tenho clareza sobre o que quero."</p>
+        <div class="proof-author">Ana S. · Lisboa</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <p class="proof-text">"Nunca pensei que um PDF gratuito pudesse ter tanto impacto. Fiz os exercícios numa tarde e saí completamente renovada."</p>
+        <div class="proof-author">Marta R. · Porto</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <p class="proof-text">"Os 5 passos são simples mas poderosos. Já partilhei com todas as minhas amigas — é exactamente o que precisávamos."</p>
+        <div class="proof-author">Catarina M. · Braga</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BOTTOM -->
+<section class="cta-bottom">
+  <h2>Pronta para desenhar a tua vida abundante?</h2>
+  <p>Junta-te a centenas de mulheres que já deram este primeiro passo.</p>
+  <a href="#" class="btn-cta-white" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+    Descarregar o Ebook Gratuito →
+  </a>
+</section>
+
+<!-- FOOTER minimal -->
+<footer>
+  <div class="footer-logo">
+    <img src="Logo.png" alt="Aroma Business Academy" />
+  </div>
+  <ul class="footer-links">
+    <li><a href="index.html">Voltar ao site</a></li>
+    <li><a href="#">Política de Privacidade</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Aroma Business Academy · Lisboa, Portugal</p>
+</footer>
+
+</body>
+</html>
